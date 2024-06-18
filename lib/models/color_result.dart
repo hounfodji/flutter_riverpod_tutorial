@@ -38,14 +38,14 @@ class ColorResult {
     return Color(int.parse(hex, radix: 16));
   }
 
-  // ColorResult like(bool value) {
-  //   return ColorResult(
-  //     id: id,
-  //     title: title,
-  //     username: username,
-  //     numViews: numViews,
-  //     hexCode: hexCode,
-  //     isLiked: value,
-  //   );
-  // }
+  ColorResult like(bool value) {
+    return ColorResult(
+      id: id,
+      title: title,
+      username: username,
+      numViews: numViews,
+      hexCode: hexCode,
+      isLiked: value,
+    );
+  }
 }
