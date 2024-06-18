@@ -1,0 +1,35 @@
+
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:riverpod_tutorial/models/color_result.dart';
+import 'package:riverpod_tutorial/services/api_service.dart';
+
+
+class ColorList extends Notifier<List<ColorResult>>  {
+  @override
+  List<ColorResult> build() {
+    _load();
+    return [];
+  }
+
+  Future<void> _load() async {
+    final results = await ApiService().listTopColors();
+    state = results;
+  }
+
+  Future<void> refresh() async {
+    state = [];
+    await _load();
+  }
+
+  
+ 
+  // void like(int id, bool value) {
+  //   final index = state.indexWhere((color) => color.id == id);
+  //   if (index >= 0) {
+  //     state = [...state]
+  //       ..removeAt(index)
+  //       ..insert(index, state[index].like(value));
+  //   }
+  // }
+}
+final colorListProvider = NotifierProvider<ColorList, List<ColorResult>>(ColorList.new);
